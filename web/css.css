@@ -1,45 +1,58 @@
-ul {
-    list-style-type: none;
-    margin: 0;
+body{
+    font: 15px/1.5 Arial, sans-serif;
     padding: 0;
-    width: 25%;
-    background-color: #333;
-    height: 100%; 
-    position: fixed; 
-    overflow: auto; 
+    margin: 0;
+    background-color: #f4f4f4;
+}
+.container{
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+header{
+    background: #35424a;
+    color: #ffffff;
+    padding-top:30px;
+    min-height: 70px;
+    border-bottom: #e8491d 3px solid;
+}
+header a{
+    color:#ffffff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 16px;
+}
+header ul{
+    margin:0;
+    padding: 0;
+}
+header li{
+   float:left;
+   display:inline;
+   padding: 0 20px 0 20px;
+}
+header #branding h1{
+    margin:0;
+}
+header #branding{
+    float: left;
+}
+header nav{
+    float:right;
+    margin-top: 10px;
 }
 
-li a {
-    display: block;
-    color: rgb(0, 21, 255);
-    padding: 8px 16px;
-    text-decoration: none;
+header .highlight, header .current a{
+    color: #e8491d;
+    font-weight:bold;
 }
-li a:hover {
-    background-color: #555;
-    color: white;
-   
+header a:hover{
+    color: #e8491d;
+    font-weight:bold;
 }
-h1{
-   color: rgb(0, 21, 255);
-   text-align: center;
-}
-body {
-    background-color: gray;
-   
-}
- .active {
-    background-color: #4CAF50;
-    color: white;
-}
-form{
-   display: inline-block;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: left;
-}
-div.form
-{
-  display: block;
-  text-align: center;
+#newCustForm{
+    float: right; 
+     margin:0;
+    padding: 5% 50% 5% 50%;
+     display:inline;
 }
