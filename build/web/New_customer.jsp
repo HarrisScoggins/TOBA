@@ -23,7 +23,7 @@
     <input type="hidden" name ="action" value="add">
     First name:<br>
     <input type="text" name="firstname" value="${user.firstName}">
-    <br>Last name:<br>
+ <br>Last name:<br>
     <input type="text" name="lastname" value="${user.lastName}">
     <br>Phone:<br>
     <input type="text" name="phone" value="${user.phone}">

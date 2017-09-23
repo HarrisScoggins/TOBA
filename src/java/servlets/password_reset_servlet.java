@@ -16,36 +16,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author hscog
- */
 public class password_reset_servlet extends HttpServlet {
 
-    /**
-     *
-     * @param request
-     * @param response
-     * @throws ServletException
-     * @throws IOException
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         doPost(request, response);
     }
 
-    /**
-     *
-     * @param request
-     * @param response
-     * @throws ServletException
-     * @throws IOException
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
+         
+         
         String action = request.getParameter("action");
         if (action == null) {
             action = "join";
@@ -56,18 +40,21 @@ public class password_reset_servlet extends HttpServlet {
             url = "/password_reset.jsp";
         }
         if (action.equals("add")) {
-            GregorianCalendar currentDate = new GregorianCalendar();
-            int currentYear = currentDate.get(Calendar.YEAR);
-            session.setAttribute("currentYear", currentYear);
             String password1 = request.getParameter("password1");
             String password2 = request.getParameter("password2");
             String newpassword = password2;
-            User user = new User();
-           session.setAttribute("password", newpassword);
-            user.setPassword(newpassword);
-            //user.setAttribute( newpassword);
-            url = "/Success.jsp";
-
+            session.getAttribute("user");
+                       
+            if( session.getAttribute("password")==null){
+                
+                url ="/New_customer.jsp";
+            }
+            else{
+                session.setAttribute("password",newpassword);
+                 url = "/Success.jsp";
+            }
+          
+           
         }
 
         getServletContext()

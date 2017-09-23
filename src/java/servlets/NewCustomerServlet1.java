@@ -2,8 +2,7 @@ package servlets;
 
 
 import java.io.IOException;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
+
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -11,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import bll.User;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 /**
  *
@@ -62,9 +63,7 @@ public class NewCustomerServlet1 extends HttpServlet {
             url = "/Login.jsp";    // the "join" page
         }
         if (action.equals("add")) {
-            GregorianCalendar currentDate = new GregorianCalendar();
-            int currentYear = currentDate.get(Calendar.YEAR);
-            request.setAttribute("currentYear", currentYear);
+            
 
             if (firstname == null || lastname == null || email == null
                     || address == null || city == null || state == null
@@ -84,13 +83,15 @@ public class NewCustomerServlet1 extends HttpServlet {
                 user.setEmail(email);
                 user.setState(state);
                 user.setZipcode(zipcode);
+                user.setPassword("welcome1");
+                user.setUsername(lastname + zipcode);
                 session.setAttribute("user", user);
-               // session.setAttribute("message",message);
+                session.setAttribute("message",message);
                 message = null;
                 url = "/Success.jsp"; //+=
 
             }
-             //session.setAttribute("user", user);
+             
              session.setAttribute("message",message);
         }
 

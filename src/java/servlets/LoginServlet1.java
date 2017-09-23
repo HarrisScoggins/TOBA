@@ -30,24 +30,17 @@ public class LoginServlet1 extends HttpServlet {
         
       HttpSession session = request.getSession();
         String action = request.getParameter("action");
-        if (action == null) {
-            action = "join";
-        }
-
+      
         String url = "/Login.jsp";
-        if (action.equals("join")) {
-            url = "/Login.jsp";
-        }
+       
         if (action.equals("add")) {
-            GregorianCalendar currentDate = new GregorianCalendar();
-            int currentYear = currentDate.get(Calendar.YEAR);
-            session.setAttribute("currentYear", currentYear);
-
             String username = request.getParameter("username");
             String password = request.getParameter("password");
             if (username.equals("jsmith@toba.com") && password.equals("letmein")) {
 
-                User user = new User(username, password);            
+                User user = new User();
+                user.setPassword(password);
+                user.setUsername(username);
                 session.setAttribute("user", user);
                 url = "/Success.jsp";
             }
