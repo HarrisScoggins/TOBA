@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import bll.User;
+import bll.UserDB;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -32,13 +33,6 @@ public class NewCustomerServlet1 extends HttpServlet {
         doPost(request, response);
     }
 
-    /**
-     *
-     * @param request
-     * @param response
-     * @throws ServletException
-     * @throws IOException
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -62,9 +56,7 @@ public class NewCustomerServlet1 extends HttpServlet {
         if (action.equals("join")) {
             url = "/Login.jsp";    // the "join" page
         }
-        if (action.equals("add")) {
-            
-
+        if (action.equals("add")) {           
             if (firstname == null || lastname == null || email == null
                     || address == null || city == null || state == null
                     || firstname.isEmpty() || lastname.isEmpty() || phone.isEmpty()
@@ -72,7 +64,8 @@ public class NewCustomerServlet1 extends HttpServlet {
                     || zipcode.isEmpty() || email.isEmpty()) {
                 url = "/New_customer.jsp"; //+=
                 message = "Please fill out all three text boxes.";
-            } else {
+                session.setAttribute("Please fill out all three text boxes.", message);
+            }else{
                 User user = new User();
                 user.setAddress(address);
                 user.setFirstName(firstname);
@@ -87,13 +80,18 @@ public class NewCustomerServlet1 extends HttpServlet {
                 user.setUsername(lastname + zipcode);
                 session.setAttribute("user", user);
                 session.setAttribute("message",message);
-                message = null;
-                url = "/Success.jsp"; //+=
+                message = null; //+=
 
-            }
-             
+                message = "";
+                url = "/Success.jsp";
+                UserDB.insert(user);
+
              session.setAttribute("message",message);
+             session.setAttribute("user",user);
+    
+            }
         }
+    
 
         getServletContext()
                 .getRequestDispatcher(url)

@@ -1,13 +1,18 @@
 package bll;
 
 import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  *
  * @author hscog
  */
+@Entity
 public class User implements Serializable {
-
+    private Long userId;
     private String firstName;
     private String lastName;
     private String phone;
@@ -46,6 +51,15 @@ public class User implements Serializable {
         this.email = email;
         this.username = username;
         this.password = password;
+    }
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
    
     public String getFirstName() {

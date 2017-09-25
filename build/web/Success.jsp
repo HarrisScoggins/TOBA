@@ -10,17 +10,19 @@
 <%@ include file="/header.html" %>
 
 
-            <h1>Titan Online Banking Application</h1>
-     
-        <nav>
-            <ul>
-                <li><a href="index.jsp">Home</a></li>
-                <li><a href="Login.jsp">Login</a></li>
-                <li><a href="New_customer.jsp">New Customer</a></li>
-                <li><a href="Account_activity.jsp">Account Activity</a></li>
-            </ul> 
-        </nav>
-            <h3>Here is the information you entered:</h3>
+<h1>Titan Online Banking Application</h1>
+<c:if test="${message != null}">
+    <p><i>${message}</i></p>
+</c:if>
+<nav>
+    <ul>
+        <li><a href="index.jsp">Home</a></li>
+        <li><a href="Login.jsp">Login</a></li>
+        <li><a href="New_customer.jsp">New Customer</a></li>
+        <li><a href="Account_activity.jsp">Account Activity</a></li>
+    </ul> 
+</nav>
+<h3>Here is the information you entered:</h3>
 
 <label>Email:</label>
 <span>${user.email}</span><br>

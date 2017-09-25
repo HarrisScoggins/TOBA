@@ -8,18 +8,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="/header.html" %>
 <!DOCTYPE >
-    <div class ="container">
-               
-                    <div id="branding"> 
-        <h1>reset</h1>
-</div>
-  
-   <form action = "password_reset_servlet" method = "post">
-       <input type="hidden" name="action" value="add">
-         Password: <input type = "text" name = "password1">
-         <br />
-         New Password: <input type = "text" name = "password2" />
-         <input type = "submit" value = "Submit" />
-                    
-                </div>
-     <%@ include file="/footer.jsp" %>
+<h1>reset</h1>
+<c:if test="${message != null}">
+    <p><i>${message}</i></p>
+</c:if>
+<form action = "password_reset_servlet" method = "post">
+    <input type="hidden" name="action" value="add">
+    Password: <input type = "text" name = "password1">
+    <br />
+    New Password: <input type = "text" name = "password2" />
+    <input type = "submit" value = "Submit" />               
+    <%@ include file="/footer.jsp" %>
