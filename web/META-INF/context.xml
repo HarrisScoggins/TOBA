@@ -1,12 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context path="/TOBA/Login.jsp">
+<Context path="/TOBA">
+    <tomcat-users>
+        <role rolename="user"/>
+       
+        <user username="admin" password="password" roles="user"/>
+    </tomcat-users>
 
-<Resource auth="Container" driverClassName="com.mysql.jdbc.Driver"
-          logAbandoned="true" maxActive="100" maxIdle="30" maxWait="10000"
-          name="jdbc/toba" password="password" removeAbandoned="true" 
-          removeAbandonedTimeout="60" type="javax.sql.DataSource" 
-          url="jdbc:mysql://localhost:3306/toba" 
-          username="root"/>
+
+ <Resource auth="Container" driverClassName="com.mysql.jdbc.Driver"
+              logAbandoned="true" maxActive="100" maxIdle="30" maxWait="10000"
+              name="jdbc/toba" password="password" removeAbandoned="true" 
+              removeAbandonedTimeout="60" type="javax.sql.DataSource" 
+              url="jdbc:mysql://localhost:3306/toba" 
+              username="root"/>
+  
+   <Realm className="org.apache.catalina.realm.UserDatabaseRealm"
+   dataSourceName="jdbc/admin" localDataSource="true"
+    connectionName="jdbc:mysql://localhost:3360/toba"
+     debug="99" driverName="com.mysql.jdbc.Driver"
+   userTable="user" userNameCol="firstname" userCredCol="password"
+   userRoleTable="user_roles" roleNameCol="role_name"/>
+
 </Context>
 
 
